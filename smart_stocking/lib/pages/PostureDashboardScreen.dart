@@ -128,11 +128,9 @@ class _PostureDashboardScreenState extends State<PostureDashboardScreen> {
               builder: (context, constraints) {
                 final screenWidth = constraints.maxWidth;
 
-                // Giữ nguyên 2 cột
                 int crossAxisCount = 2;
 
-                // Tăng aspect ratio để làm card "lùn" lại
-                double aspectRatio = screenWidth > 600 ? 2.2 : 1.2;
+                double aspectRatio = screenWidth > 600 ? 2.2 : 1;
 
                 return GridView.count(
                   crossAxisCount: crossAxisCount,
