@@ -1,4 +1,4 @@
-import 'dart:async';
+ import 'dart:async';
 import 'dart:math';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
@@ -124,35 +124,47 @@ class _PostureDashboardScreenState extends State<PostureDashboardScreen> {
           ),
           const SizedBox(height: 0),
           Expanded(
-            child: GridView.count(
-              crossAxisCount: 2,
-              childAspectRatio: 1,
-              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 16),
-              shrinkWrap: true,
-              children: [
-                _buildCard(
-                  icon: Icons.fitness_center,
-                  label: "Coaching Program",
-                  subtitle: "Check improvement rate",
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (_) => const CoachingProgramScreen()),
-                    );
-                  },
-                ),
-                _buildCard(
-                  icon: Icons.bar_chart,
-                  label: "Monthly Report",
-                  subtitle: "Check Now >",
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (_) => const MonthlyReportScreen()),
-                    );
-                  },
-                ),
-              ],
+            child: LayoutBuilder(
+              builder: (context, constraints) {
+                final screenWidth = constraints.maxWidth;
+
+                // Giữ nguyên 2 cột
+                int crossAxisCount = 2;
+
+                // Tăng aspect ratio để làm card "lùn" lại
+                double aspectRatio = screenWidth > 600 ? 2.2 : 1.2;
+
+                return GridView.count(
+                  crossAxisCount: crossAxisCount,
+                  childAspectRatio: aspectRatio,
+                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 16),
+                  shrinkWrap: true,
+                  children: [
+                    _buildCard(
+                      icon: Icons.fitness_center,
+                      label: "Coaching Program",
+                      subtitle: "Check improvement rate",
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (_) => const CoachingProgramScreen()),
+                        );
+                      },
+                    ),
+                    _buildCard(
+                      icon: Icons.bar_chart,
+                      label: "Monthly Report",
+                      subtitle: "Check Now >",
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (_) => const MonthlyReportScreen()),
+                        );
+                      },
+                    ),
+                  ],
+                );
+              },
             ),
           ),
         ],
