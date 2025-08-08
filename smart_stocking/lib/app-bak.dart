@@ -19,6 +19,7 @@ import 'blocs/user_bloc.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'models/theme.dart';
 import 'pages/splash.dart';
+import 'widgets/web_max_width_wrapper.dart';
 
 // final FirebaseAnalytics firebaseAnalytics = FirebaseAnalytics.instance;
 // final FirebaseAnalyticsObserver firebaseObserver =
@@ -86,6 +87,9 @@ class _FlutterAppState extends State<FlutterApp> {
                     create: (context) => ConfigBloc()),
               ],
               child: MaterialApp(
+                  builder: (context, child) {
+                    return WebMaxWidthWrapper(child: child!);
+                  },
                   debugShowCheckedModeBanner: false,
                   supportedLocales: context.supportedLocales,
                   localizationsDelegates: context.localizationDelegates,

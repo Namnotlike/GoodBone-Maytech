@@ -130,7 +130,7 @@ class _PostureDashboardScreenState extends State<PostureDashboardScreen> {
 
                 int crossAxisCount = 2;
 
-                double aspectRatio = screenWidth > 600 ? 2.2 : 1;
+                double aspectRatio = screenWidth > 700 ? 1.5 : 1;
 
                 return GridView.count(
                   crossAxisCount: crossAxisCount,
