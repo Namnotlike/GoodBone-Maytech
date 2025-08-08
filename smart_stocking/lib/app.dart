@@ -8,6 +8,7 @@ import 'package:provider/provider.dart';
 import 'package:wordpress_app/blocs/comment_bloc.dart';
 import 'package:wordpress_app/blocs/config_bloc.dart';
 import 'package:wordpress_app/blue-plus/screens/bluetooth_off_screen.dart';
+import 'package:wordpress_app/widgets/web_max_width_wrapper.dart';
 import 'blocs/category_bloc.dart';
 import 'blocs/featured_bloc.dart';
 import 'blocs/latest_articles_bloc.dart';
@@ -86,6 +87,9 @@ class _FlutterAppState extends State<FlutterApp> {
                     create: (context) => ConfigBloc()),
               ],
               child: MaterialApp(
+                  builder: (context, child) {
+                    return WebMaxWidthWrapper(child: child!);
+                  },
                   debugShowCheckedModeBanner: false,
                   supportedLocales: context.supportedLocales,
                   localizationsDelegates: context.localizationDelegates,
